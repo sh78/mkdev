@@ -1,0 +1,32 @@
+{
+  "name": "mkdev",
+  "version": "0.0.1",
+  "description": "A very opinionated, assumptious, and cross-platform build system for setting up new development machines.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sh78/mkdev.git"
+  },
+  "keywords": [
+    "macos",
+    "linux",
+    "setup",
+    "dotfiles",
+    "mackup",
+    "backup"
+  ],
+  "author": "Sean Henderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sh78/mkdev/issues"
+  },
+  "homepage": "https://github.com/sh78/mkdev#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "js-yaml": "^3.12.0",
+    "shelljs": "^0.8.2"
+  }
+}
