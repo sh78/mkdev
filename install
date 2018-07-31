@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# https://nodejs.org/en/download/package-manager/
+
+if test ! "$(command -v npm)"; then
+    echo "Preparing to install Node and NPM."
+    sudo -v
+    os=$(uname)
+    if [[ $os -eq 'Darwin' ]]; then
+        if test ! "$(command -v brew)"; then
+            echo "Installing homebrew..."
+            ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
+        echo "Installing Node and NPM..."
+        brew update
+        brew install node
+    elif [[ $os -eq 'Linux' ]]; then
+        if test "$(command -v pkg)"; then
+            # This is probably Android
+            echo "Installing Node and NPM..."
+            pkg -y install node
+            pkg -y install npm
+        elif test "$(command -v apt-get)"; then
+            echo "Installing Node and NPM..."
+            curl -sL "https://deb.nodesource.com/setup_10.x" | sudo -E bash -
+            apt-get -y update
+            sudo apt-get install -y nodejs
+        elif test "$(command -v dnf)"; then
+            echo "Installing Node and NPM..."
+            # `dnf update` is apparently same as `upgrade`. Needs more research.
+            sudo dnf -y install nodejs
+            dnf -y install node
+            dnf -y install npm
+        elif test "$(command -v yum)"; then
+            echo "Installing Node and NPM..."
+            curl --silent --location "https://rpm.nodesource.com/setup_10.x" | sudo bash -
+            sudo yum -y install nodejs
+        else
+            echo "Looks like you don't have a supported package manager. Sincerest apologies."
+        fi
+    fi
+fi
