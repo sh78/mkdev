@@ -1,0 +1,14 @@
+system:
+    light:
+      - git
+      - gcc:
+            brew: apple-gcc42
+            yum: gcc
+            apt: gcc
+      - vim:
+            brew: 'vim --with-features=huge --with-python3 --with-ruby --with-perl'
+            dnf: vim-enhanced
+      - tmux
+    full:
+        - fortune
+        - pianobar
