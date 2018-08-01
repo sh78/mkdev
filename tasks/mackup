@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if test ! "$(command -v mackup)"; then
+    echo "installing mackup"
+    brew install mackup
+fi
+echo "Restoring dotfiles from backup."
+yes | mackup restore
