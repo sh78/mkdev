@@ -1,2 +1,4 @@
 TODO.md
 defaults-export-*
+session/*
+!session/.empty
