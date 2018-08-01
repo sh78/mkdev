@@ -1,5 +1,5 @@
-const fs = require('fs')
-const shell = require('shelljs')
+// const fs = require('fs')
+// const shell = require('shelljs')
 const prompt = require('./lib/prompt')
 const chalk = require('chalk')
 const red = chalk.red
@@ -12,9 +12,6 @@ const log = console.log
  * Get system and config info.
  */
 log(yellow('Running prep...'))
-
-const conf = require('./lib/conf.js')
-log(conf)
 
 const system = require('./lib/system.js')
 log(system)
@@ -30,6 +27,7 @@ if (system.diskFreeIsGb && system.diskFreeNum > 10) {
       answer = answer.toLowerCase()
       if (answer === 'y' || answer === 'yes') {
         log('Ok, proceeding...')
+        main()
       } else {
         process.exit()
       }
@@ -39,4 +37,12 @@ if (system.diskFreeIsGb && system.diskFreeNum > 10) {
       log(error)
       process.exit()
     })
+}
+
+function main () {
+  const conf = require('./lib/conf.js')
+  conf.tasks.forEach((task) => {
+    require('./tasks/' + task)
+  })
+  log(conf)
 }
