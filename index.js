@@ -19,6 +19,7 @@ log(conf)
 const system = require('./lib/system.js')
 log(system)
 
+// Check disk space, try to bail if low.
 if (system.diskFreeIsGb && system.diskFreeNum > 10) {
   log(yellow(
     `You have ${system.diskFree} of free disk space.` + '\n' +
