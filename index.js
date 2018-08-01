@@ -1,5 +1,4 @@
 const fs = require('fs')
-// const yaml = require('js-yaml')
 const shell = require('shelljs')
 const prompt = require('./lib/prompt')
 const chalk = require('chalk')
