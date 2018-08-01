@@ -155,22 +155,18 @@ complete.
 
 ## `install`
 
-This is a bash script. It is run first to get `mmkdev` set up.
+This is a bash script. It is run first to get `mkdev` set up in environments
+that don't have node/npm available.
 
-1. Configure node/NPM and install self dependencies if not.
-2. Determine which type of system this is and cache that somewhere.
-3. Run `mkdev config`
-4. Check for flag that file sync is ready. If not, confirm with user before
-5. Check available disk space, confirm with user before proceeding if not a lot.
-   proceeding.
-6. Check available disk space, confirm with user before proceeding if not a lot.
+## `mkdev prep` 
 
-## `mkdev config`
+Will also be run automatically before any task. Caches system and config file
+info that is passed down to other tasks.
 
-1. Check for existing config
-  - If it exists, validate it.
-  - If it doesn't, prompt for input.
-2. Check for a valid package config and validate.
+1. Determine which type of system this is and cache that somewhere.
+2. Verify/cache configs.
+3. Check for flag that file sync is ready. If not, confirm with user before
+4. Check available disk space, confirm with user before proceeding if not a lot.
 
 ## `mkdev files`
 
