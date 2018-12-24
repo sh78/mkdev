@@ -1,14 +1,43 @@
-system:
-    light:
-      - git
-      - gcc:
-            brew: apple-gcc42
-            yum: gcc
-            apt: gcc
-      - vim:
-            brew: 'vim --with-features=huge --with-python3 --with-ruby --with-perl'
-            dnf: vim-enhanced
-      - tmux
-    full:
-        - fortune
-        - pianobar
+# WIP. Me thinks just having a key for each package will suffice.
+#
+# Under each package key There will be standard keys for each platform/package
+# manager. If a certain platform key doesn't exist, it simply won't be
+# installed.
+#
+# If a package key only has a single value instead of an array of platform keys.
+# then attempt to install the package verbatim on any system.
+#
+# For packages that use node, pip, etc across platforms just add an array with a
+# single value to the Package like `- pip: mackup`. The script will install such
+# packages on all platforms.
+
+Packages:
+  GNOME Tweaks:
+    - apt: gnome-tweaks
+    - dnf: gnome-tweak-tool
+  wget: wget
+  gpg2:
+    - apt: gnupg2
+  Neovim with Python Support:
+    - apt: neovim python-neovim python3-neovim
+    - brew: neovim
+    - pacman: neovim python2-neovim python-neovim
+    - dnf: neovim python2-neovim python3-neovim
+  Git: git
+  GCC: gcc
+  Make: make
+  Pkg Config:
+    - apt: pkg-config
+    - dnf: pkgconfig
+  Lib X \*:
+    - apt: libx11-dev libxtst-dev libxi-dev
+    - dnf: libX11-devel libXtst-devel libXi-devel
+  Notify Send:
+    - apt: libnotify-bin
+  Mackup:
+    - pip: --upgrade mackup
+  htop: htop
+  neofetch: neofetch
+  Tmux:
+    - brew: tmux
+    - apt: tmux
